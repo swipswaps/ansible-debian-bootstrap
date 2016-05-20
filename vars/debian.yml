@@ -1,5 +1,8 @@
 ---
 
+dbs_apt_fallback_components: "main contrib non-free"
+dbs_apt_fallback_host: "httpredir.debian.org"
+
 dbs_repo_new:
   - "http://{{ dbs_apt_default_host }}/debian {{ ansible_distribution_release }} {{ dbs_apt_components }}"
   - "http://{{ dbs_apt_default_host }}/debian {{ ansible_distribution_release }}-updates {{ dbs_apt_components }}"

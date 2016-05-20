@@ -8,7 +8,9 @@ Vagrant.configure("2") do |config|
   vms = [
     [ "debian-wheezy", "debian/wheezy64" ],
     [ "debian-jessie", "debian/jessie64" ],
-    [ "devuan-jessie", "https://vagrant.devuan.org/devuan_jessie_beta/devuan_jessie_1.0.0-beta_amd64_vagrant.box" ]
+    [ "devuan-jessie", "https://vagrant.devuan.org/devuan_jessie_beta/devuan_jessie_1.0.0-beta_amd64_vagrant.box" ],
+    [ "ubuntu-trusty", "ubuntu/trusty64" ],
+    [ "ubuntu-xenial", "ubuntu/xenial64" ] # 16.04
   ]
 
   config.vm.provider "virtualbox" do |v|
@@ -20,6 +22,7 @@ Vagrant.configure("2") do |config|
     config.vm.define vm[0] do |m|
       m.vm.box = vm[1]
       m.vm.network "private_network", type: "dhcp"
+			m.vm.synced_folder ".", "/vagrant", disabled: true
 
       if vm[0] == "devuan-jessie"
           config.ssh.username = "root"

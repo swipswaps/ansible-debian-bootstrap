@@ -19,3 +19,4 @@
 
 - name: reload networking
   service: name=networking state=reloaded
+  when: ansible_service_mgr != 'upstart'
